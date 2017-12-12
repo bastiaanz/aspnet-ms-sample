@@ -25,5 +25,4 @@ deploy:
         username: $USERNAME
         password: $PASSWORD
         repository: bastiaanz/aspnet-ms
-        registry: https://registry.hub.docker.com
         entrypoint: "/pipeline/source/app/docker_entrypoint.sh"
