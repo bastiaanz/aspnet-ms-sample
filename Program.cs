@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace sampleApp
 {
@@ -6,7 +8,17 @@ namespace sampleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var configuration = new ConfigurationBuilder()
+                .AddCommandLine(args)
+                .Build();
+
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseStartup<Startup>()
+                .UseConfiguration(configuration)
+                .Build();
+
+            host.Run();
         }
     }
 }
